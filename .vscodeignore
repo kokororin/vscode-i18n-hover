@@ -1,0 +1,14 @@
+.vscode/**
+.vscode-test/**
+src/**
+out/test/**
+test/**
+testProject/**
+**/*.map
+.gitignore
+.travis.yml
+tsconfig.json
+.editorconfig
+yarn.lock
+*.log
+node_modules/**/*.md

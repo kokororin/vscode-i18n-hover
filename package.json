@@ -1,0 +1,57 @@
+{
+  "name": "vscode-i18n-hover",
+  "displayName": "VSCode i18n Hover",
+  "version": "1.0.0",
+  "description": "Show i18n message on hover",
+  "main": "./out/src/extension",
+  "scripts": {
+    "build": "npm run trash && tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "trash": "trash out",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "prepublishOnly": "npm run build && vsce publish"
+  },
+  "keywords": [
+    "i18n",
+    "intl",
+    "vscode"
+  ],
+  "icon": "logo.png",
+  "publisher": "kokororin",
+  "author": "kokororin",
+  "license": "BSD-3-Clause",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kokororin/vscode-i18n-hover.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kokororin/vscode-i18n-hover/issues"
+  },
+  "homepage": "https://github.com/kokororin/vscode-i18n-hover#readme",
+  "engines": {
+    "vscode": "^1.20.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:react",
+    "onLanguage:typescriptreact",
+    "onLanguage:javascriptreact",
+    "onLanguage:javascript",
+    "onLanguage:typescript"
+  ],
+  "devDependencies": {
+    "@types/babel__core": "^7.1.3",
+    "@types/node": "^8.0.28",
+    "cross-env": "^5.1.1",
+    "trash-cli": "^1.4.0",
+    "typescript": "^2.5.2",
+    "vscode": "^1.1.17"
+  },
+  "dependencies": {
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "fast-glob": "^3.1.1"
+  }
+}

@@ -16,10 +16,6 @@ export class HoverProvider implements vscode.HoverProvider {
       ? document.getText(keyRange).replace(HoverProvider.REG_EXP, '$1')
       : undefined;
 
-    if (!key) {
-      return;
-    }
-
     return key;
   }
 
@@ -29,7 +25,7 @@ export class HoverProvider implements vscode.HoverProvider {
     return new vscode.Hover(markdownText);
   }
 
-  public provideHover(
+  public async provideHover(
     document: vscode.TextDocument,
     position: vscode.Position
   ) {
@@ -42,7 +38,7 @@ export class HoverProvider implements vscode.HoverProvider {
     const workspaceFolders = vscode.workspace.workspaceFolders;
     if (workspaceFolders && workspaceFolders[0]) {
       try {
-        const entries = fg.sync(
+        const entries = await fg(
           [
             ...patterns,
             ...['!node_modules/**/*', '!bower_components/**/*', '!vendor/**/*']
@@ -62,7 +58,7 @@ export class HoverProvider implements vscode.HoverProvider {
           const ext = path.extname(entry);
           const fileName = path.basename(entry, ext);
 
-          const localeMap = new Code(entry).run();
+          const localeMap = await new Code(entry).run();
           const openFile = vscode.Uri.file(entry);
           resultTable.push([
             `[${fileName}](${openFile})`,

@@ -5,7 +5,7 @@ import * as table from 'markdown-table';
 import { Code } from './Code';
 
 export class HoverProvider implements vscode.HoverProvider {
-  static REG_EXP = /(?:[\s{\.]intl\.get|t)\(['"]([^]+?)['"]/g;
+  private static REG_EXP = /(?:[\s{\.]intl\.get|t)\(['"]([^]+?)['"]/g;
 
   private getKey(document: vscode.TextDocument, position: vscode.Position) {
     const keyRange = document.getWordRangeAtPosition(

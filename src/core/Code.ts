@@ -23,6 +23,7 @@ export class Code {
   }
 
   public run() {
+    // eslint-disable-next-line no-eval
     return eval(this.transform());
   }
 }

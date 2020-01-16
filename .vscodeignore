@@ -9,6 +9,7 @@ testProject/**
 .travis.yml
 tsconfig.json
 .editorconfig
+.eslintrc.js
 yarn.lock
 *.log
 node_modules/**/*.md

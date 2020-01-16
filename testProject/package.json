@@ -1,4 +1,5 @@
 {
+  "name": "vscode-i18n-hover-test-project",
   "dependencies": {
     "react": "^15.6.2",
     "react-dom": "^15.6.2",

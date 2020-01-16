@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import HoverProvider from './HoverProvider';
+import { HoverProvider } from './core/HoverProvider';
 
 export function activate(context: vscode.ExtensionContext): void {
   context.subscriptions.push(
@@ -7,9 +7,7 @@ export function activate(context: vscode.ExtensionContext): void {
       [
         { language: 'react', scheme: '*' },
         { language: 'javascriptreact', scheme: '*' },
-        { language: 'typescriptreact', scheme: '*' },
-        { language: 'javascript', scheme: '*' },
-        { language: 'typescript', scheme: '*' }
+        { language: 'javascript', scheme: '*' }
       ],
       new HoverProvider()
     )

@@ -1,6 +1,6 @@
 ### 1.0.1
 
-Multi languages supported
+- Multi languages supported
 
 ### 1.0.0
 

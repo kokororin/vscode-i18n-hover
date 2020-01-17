@@ -1,14 +1,16 @@
-import * as path from 'path';
 import * as fs from 'fs';
 import * as crypto from 'crypto';
 import * as babel from '@babel/core';
+import * as findBabelConfig from 'find-babel-config';
 
 export class Code {
   private static cacheMap = new Map<string, string>();
   private hash: string;
   private code: string;
+  private cwd: string;
 
-  public constructor(filePath: string) {
+  public constructor(filePath: string, cwd: string) {
+    this.cwd = cwd;
     this.code = String(fs.readFileSync(filePath));
     this.hash = crypto
       .createHash('sha1')
@@ -21,12 +23,29 @@ export class Code {
       return Code.cacheMap.get(this.hash)!;
     }
 
-    const result = await babel.transformAsync(this.code, {
+    let babelConfig: any;
+    try {
+      babelConfig = await findBabelConfig(this.cwd);
+    } catch (err) {
+      babelConfig = false;
+    }
+    let transformOptions: babel.TransformOptions = {
       babelrc: false,
-      presets: [
-        path.join(__dirname, '/../../../node_modules/@babel/preset-env')
-      ]
-    });
+      cwd: this.cwd
+    };
+    if (babelConfig && babelConfig.config) {
+      transformOptions = {
+        ...transformOptions,
+        ...babelConfig.config
+      };
+    } else {
+      transformOptions = {
+        ...transformOptions,
+        presets: ['@babel/preset-env']
+      };
+    }
+
+    const result = await babel.transformAsync(this.code, transformOptions);
     if (result && result.code) {
       Code.cacheMap.set(this.hash, result.code);
       return result.code;

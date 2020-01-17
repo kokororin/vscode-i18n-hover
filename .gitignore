@@ -4,3 +4,5 @@ npm-debug.log
 *.vsix
 .vscode-test
 *.log
+testProject/yarn.lock
+testProject/package-lock.json

@@ -9,8 +9,6 @@
     "watch": "tsc -watch -p ./",
     "trash": "trash out",
     "lint": "eslint src --ext .ts",
-    "pretest": "npm run build",
-    "test": "cross-env CODE_TESTS_WORKSPACE=testProject node ./node_modules/vscode/bin/test",
     "postinstall": "node ./node_modules/vscode/bin/install",
     "vscode:prepublish": "npm run build"
   },
@@ -63,10 +61,8 @@
     "@types/node": "^8.0.28",
     "@typescript-eslint/eslint-plugin": "^2.16.0",
     "@typescript-eslint/parser": "^2.16.0",
-    "cross-env": "^6.0.3",
     "eslint": "^6.8.0",
     "eslint-config-kotori": "^0.3.5",
-    "pjson": "^1.0.9",
     "trash-cli": "^1.4.0",
     "typescript": "^3.7.4",
     "vscode": "^1.1.17"
@@ -75,6 +71,7 @@
     "@babel/core": "^7.8.3",
     "@babel/preset-env": "^7.8.3",
     "fast-glob": "^3.1.1",
+    "find-babel-config": "^1.2.0",
     "markdown-table": "^1.1.3"
   }
 }

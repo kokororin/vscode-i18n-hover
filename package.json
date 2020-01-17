@@ -1,7 +1,7 @@
 {
   "name": "vscode-i18n-hover",
   "displayName": "VSCode i18n Hover",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Show i18n message on hover",
   "main": "./out/src/extension",
   "scripts": {

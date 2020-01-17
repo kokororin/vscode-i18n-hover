@@ -1,3 +1,7 @@
+### 1.0.4
+
+- Parse project babel config
+
 ### 1.0.3
 
 - Update for cache

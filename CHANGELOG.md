@@ -1,3 +1,11 @@
+### 1.0.6
+
+- Revert
+
+### 1.0.5
+
+- Fix publish
+
 ### 1.0.4
 
 - Parse project babel config

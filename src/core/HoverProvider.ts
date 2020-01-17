@@ -58,10 +58,7 @@ export class HoverProvider implements vscode.HoverProvider {
           const ext = path.extname(entry);
           const fileName = path.basename(entry, ext);
 
-          const localeMap = await new Code(
-            entry,
-            workspaceFolders[0].uri.fsPath
-          ).run();
+          const localeMap = await new Code(entry).run();
           const openFile = vscode.Uri.file(entry);
           resultTable.push([
             `[${fileName}](${openFile})`,

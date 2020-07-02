@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
+import * as os from 'os';
 import * as fg from 'fast-glob';
-import * as table from 'markdown-table';
 import { Code } from './Code';
 
 export class HoverProvider implements vscode.HoverProvider {
@@ -52,7 +52,7 @@ export class HoverProvider implements vscode.HoverProvider {
           return this.createHover('Cannot find any locale file');
         }
 
-        const resultTable = [['', '']];
+        let result = '';
 
         for (const entry of entries) {
           const ext = path.extname(entry);
@@ -60,13 +60,12 @@ export class HoverProvider implements vscode.HoverProvider {
 
           const localeMap = await new Code(entry).run();
           const openFile = vscode.Uri.file(entry);
-          resultTable.push([
-            `[${fileName}](${openFile})`,
-            localeMap[key] || '-'
-          ]);
+          result += `* [${fileName}](${openFile}) ${localeMap[key] || '-'}${
+            os.EOL
+          }`;
         }
 
-        return this.createHover(table(resultTable));
+        return this.createHover(result);
       } catch (err) {
         console.error(err);
         return this.createHover('Error occured');
